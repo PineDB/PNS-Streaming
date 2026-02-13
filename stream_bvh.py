@@ -720,7 +720,8 @@ def run_live_plot(receiver: BVHReceiver):
         positions = forward_kinematics(data)
 
         # We plot X, Z, Y  (swap Y↔Z so "up" is the matplotlib Z-axis)
-        xs = positions[:, 0]
+        # Negate X to mirror the view so it matches Axis Studio's perspective.
+        xs = -positions[:, 0]
         ys = positions[:, 2]
         zs = positions[:, 1]
 
